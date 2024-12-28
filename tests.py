@@ -193,3 +193,21 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Sherlock Holmes')
 
         assert collector.favorites == []
+
+    ##################### DORABOTKA ####################
+
+    def test_get_books_genre(self):
+        collector = BooksCollector()
+
+        collector.add_new_book('Sherlock Holmes')
+        collector.set_book_genre('Sherlock Holmes', 'Детективы')
+
+        assert collector.get_books_genre() == {'Sherlock Holmes': 'Детективы'}
+
+    def test_get_list_of_favorites_books(self):
+        collector = BooksCollector()
+
+        collector.add_new_book('Sherlock Holmes')
+        collector.add_book_in_favorites('Sherlock Holmes')
+
+        assert collector.get_list_of_favorites_books() == ['Sherlock Holmes']
